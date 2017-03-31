@@ -1,6 +1,7 @@
 package com.myolin.optimiserandroid;
 
 import android.content.Context;
+import android.os.Parcelable;
 import android.support.annotation.IntegerRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -54,6 +55,7 @@ public class MyActivity extends AppCompatActivity {
             bundle.putInt("Rows", row);
             bundle.putInt("Start", start);
             bundle.putInt("End", end);
+            bundle.putParcelable("Asset", asset);
             fragment.setArguments(bundle);
         }
 

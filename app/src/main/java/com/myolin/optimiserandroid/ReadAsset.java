@@ -2,6 +2,8 @@ package com.myolin.optimiserandroid;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
 import java.io.InputStream;
@@ -12,7 +14,30 @@ import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
 
-public class ReadAsset {
+public class ReadAsset implements Parcelable{
+    protected ReadAsset(Parcel in) {
+    }
+
+    public static final Creator<ReadAsset> CREATOR = new Creator<ReadAsset>() {
+        @Override
+        public ReadAsset createFromParcel(Parcel in) {
+            return new ReadAsset(in);
+        }
+
+        @Override
+        public ReadAsset[] newArray(int size) {
+            return new ReadAsset[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+    }
 
     Sheet workSheet;
 
@@ -24,7 +49,7 @@ public class ReadAsset {
         Sheet s = null;
         try {
             AssetManager am = context.getAssets();
-            InputStream is = am.open("mobiletakeoff.XLS");
+            InputStream is = am.open("newmobiletakeoff.XLS");
             Workbook wb = Workbook.getWorkbook(is);
             s = wb.getSheet(1);
         } catch (Exception e) {
